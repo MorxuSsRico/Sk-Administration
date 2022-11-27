@@ -14,11 +14,22 @@ command /staffmod [<text>]:
                 clear player's inventory 
                 set slot 8 of player to lime dye
                 set slot 4 of player to nether star
-                make player execute command "/stafflist"
+                add player to {stafflist::*}
+                send "&bStaff >> &c%player% a pris son service" to {stafflist::*}
         if arg 1 is "off":
             set {staffmod.%player%} to false
             send "&bStaff >> &cStaff Mod Désactivée" 
             clear player's inventory
+            remove player from {stafflist::*}
+
+Command /stafflist:
+    trigger:
+        if size of {stafflist::*} = 0:
+            send "&bStaff >> &cAucune Staff en service"
+        else:
+            set {stafflistTexte} to join {stafflist::*} using ", "
+            send "&bStaff en service &f: &c%{stafflistTexte}%" to player
+
 
 on flight toggle:
     if {staffmod.%player%} is false:
@@ -47,10 +58,12 @@ on right click with lime dye:
             set {vanish.%player%} to true
             hide player from all players
             send "&bStaff >> &cVanish Activée"
+            send "&bStaff >> <blue>%player% &cà activé son vanish"
         else:
             set {vanish.%player%} to false
             reveal player from all players
             send "&bStaff >> &cVanish Désactivée"
+            send "&bStaff >> <blue>%player% &cà désactivé son vanish"
 
 
 command /goto [<player>]:
@@ -79,14 +92,11 @@ on damage:
         if {staffmod.%victim%} is true:
             cancel event
 
-Command /stafflist:
-  description: Récupère la liste des membres de l'Equipe
-  trigger:
-    loop all players:
-      if {staffmod.%loop-player%} = true:
-        add name of loop-player to {_stafflist::*}
-    set {_stafflistTexte} to join {_stafflist::*} using ", "
-    send "&bStaff en service &f: &c%{_stafflistTexte}%" to player
+
+command /clear:
+    trigger:
+        remove player from {stafflist::*}
+    
 
 
 on right click with a nether star on a player:
