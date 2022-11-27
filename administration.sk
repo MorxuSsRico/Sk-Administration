@@ -77,6 +77,7 @@ on damage:
     if victim is a player:
         if {staffmod.%victim%} is true:
             cancel event
+            send "Vous etes en God"
 
 Command /stafflist:
   description: Récupère la liste des membres de l'Equipe
