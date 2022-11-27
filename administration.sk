@@ -14,6 +14,7 @@ command /staffmod [<text>]:
                 clear player's inventory 
                 set slot 8 of player to lime dye
                 set slot 4 of player to nether star
+                make player execute command "/stafflist"
         if arg 1 is "off":
             set {staffmod.%player%} to false
             send "&bStaff >> &cStaff Mod Désactivée" 
