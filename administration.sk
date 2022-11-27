@@ -86,7 +86,7 @@ Command /stafflist:
       if {staffmod.%loop-player%} = true:
         add name of loop-player to {_stafflist::*}
     set {_stafflistTexte} to join {_stafflist::*} using ", "
-    send "&bStaff en service &f: &c%{_stafflistTexte}%" to sender
+    send "&bStaff en service &f: &c%{_stafflistTexte}%" to player
 
 
 on right click with a nether star on a player:
