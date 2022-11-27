@@ -92,13 +92,6 @@ on damage:
         if {staffmod.%victim%} is true:
             cancel event
 
-
-command /clear:
-    trigger:
-        remove player from {stafflist::*}
-    
-
-
 on right click with a nether star on a player:
     if {staffmod.%player%} is true:
         if {freeze.%clicked player%} is true:
