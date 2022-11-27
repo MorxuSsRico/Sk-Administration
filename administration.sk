@@ -105,4 +105,3 @@ on right click with a nether star on a player:
 on break:
     if {staffmod.%player%} is true:
         cancel event
-        send "&bStaff >> &cVous ne pouvez pas casser de block en staffmod"
