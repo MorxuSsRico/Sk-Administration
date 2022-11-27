@@ -96,4 +96,4 @@ on right click with a nether star on a player:
         else:
             set {freeze.%clicked player%} to true
             apply blindness 250 to clicked player for 999 days
-            apply slowness 250 to clicked player for 999 days
+            apply slowness 250 to target player for 999 days
